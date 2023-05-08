@@ -16,6 +16,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\yank\Desktop\Herramientas de Programacion\Parcial1\Parcial1
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Genero/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Genero/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Genero/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Genero/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Genero/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/yank/Desktop/Herramientas de Programacion/Parcial1/Parcial1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

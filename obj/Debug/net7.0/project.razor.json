@@ -18645,8 +18645,18 @@
   "RootNamespace": "Parcial1",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Genero\\Delete.cshtml",
+      "TargetPath": "Views\\Genero\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Videojuego\\Details.cshtml",
       "TargetPath": "Views\\Videojuego\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Genero\\Create.cshtml",
+      "TargetPath": "Views\\Genero\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18665,6 +18675,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Genero\\Index.cshtml",
+      "TargetPath": "Views\\Genero\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Videojuego\\Edit.cshtml",
       "TargetPath": "Views\\Videojuego\\Edit.cshtml",
       "FileKind": "mvc"
@@ -18672,6 +18687,11 @@
     {
       "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Genero\\Details.cshtml",
+      "TargetPath": "Views\\Genero\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18692,6 +18712,11 @@
     {
       "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Genero\\Edit.cshtml",
+      "TargetPath": "Views\\Genero\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
