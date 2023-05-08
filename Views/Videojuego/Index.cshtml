@@ -1,0 +1,64 @@
+@model IEnumerable<Parcial1.Models.Videojuego>
+
+@{
+    ViewData["Title"] = "Index";
+    var Videojuego= ViewBag.Genero;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form action="@Url.Action("Index","Videojuego")">
+    <input class="form-control" type="text" name="filtro">
+    <button class="btn btn-primary" type="submit">Buscar Videojuego</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desarrollador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestriccionEdad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desarrollador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestriccionEdad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
