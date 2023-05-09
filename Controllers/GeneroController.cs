@@ -92,7 +92,7 @@ namespace Parcial1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,VideojuegoId")] Genero genero)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,VideojuegoId")] GeneroViewModel genero)
         {
             if (id != genero.Id)
             {
@@ -103,7 +103,11 @@ namespace Parcial1.Controllers
             {
                 try
                 {
-                    _context.Update(genero);
+                    _context.Update(new Genero{
+                        Id=genero.Id,
+                        Nombre=genero.Nombre,
+                        Descripcion=genero.Descripcion,
+                    });
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

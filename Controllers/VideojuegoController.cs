@@ -33,6 +33,11 @@ namespace Parcial1.Controllers
         }
 
         // GET: Videojuego/Details/5
+        /// <summary>
+        /// Muestra los detalles del videojuego
+        /// </summary>
+        /// <param name="id">Sirve para encontrar un videojuego por el id</param>
+        /// <returns>Devuelve una vista para visualizar los detalles del videojuego</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Videojuego == null)
@@ -52,11 +57,12 @@ namespace Parcial1.Controllers
         }
 
         // GET: Videojuego/Create
+        /// <summary>
+        /// Devuelve una vista para poder crear un videojuego
+        /// </summary>
+        /// <returns>Retorna una vista para crear un videojuego</returns>        
         public IActionResult Create()
         {
-            // _context.Genero.Add(new Genero{Nombre="Aventura",Descripcion="Explora mundos"});
-            // _context.Genero.Add(new Genero{Nombre="Shooter",Descripcion="Juegos de disparos"});
-            // _context.SaveChanges();
 
             ViewBag.ViedeojuegoType = Enum.GetValues(typeof(ViedeojuegoType)).Cast<ViedeojuegoType>().Select(e => new SelectListItem
             {
@@ -76,6 +82,11 @@ namespace Parcial1.Controllers
         // POST: Videojuego/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Crear un nuevo videojuego
+        /// </summary>
+        /// <param name="videojuego"></param>
+        /// <returns>Retorna un videojuego nuevo</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Desarrollador,RestriccionEdad,Precio,GeneroId")] ViedeojuegoViewMOdel videojuego)
@@ -97,7 +108,7 @@ namespace Parcial1.Controllers
             return View(videojuego);
         }
 
-        // GET: Videojuego/Edit/5
+        // GET: Videojuego/Edit/5    
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Videojuego == null)
@@ -135,6 +146,12 @@ namespace Parcial1.Controllers
         // POST: Videojuego/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+        /// <summary>
+        /// Guarda la edicion de un videojuego
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna una vista con los cambios hechos</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Desarrollador,RestriccionEdad,Precio,GeneroId")] ViedeojuegoViewMOdel videojuego)
