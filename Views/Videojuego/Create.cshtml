@@ -4,8 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
+<h1>Crear juego</h1>
+<hr>
 <h4>Videojuego</h4>
 <hr />
 <div class="row">
@@ -37,14 +37,14 @@
                 <select asp-for="GeneroId" class ="form-control" asp-items="ViewBag.Generos"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-warning" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Volver a la lista</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
 </div>
 
 @section Scripts {

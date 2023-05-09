@@ -5,14 +5,16 @@
     var Videojuego= ViewBag.Genero;
 }
 
-<h1>Index</h1>
+<h1>Lista de videojuegos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-light">Crear un videojuego</a>
 </p>
 <form action="@Url.Action("Index","Videojuego")">
-    <input class="form-control" type="text" name="filtro">
-    <button class="btn btn-primary" type="submit">Buscar Videojuego</button>
+    @* <input class="form-control" type="text" name="filtro"> *@
+    <input class="form-control" type="text" value="Busca el nombre del videojuego que desees..." aria-label="readonly input example" name="filtro" readonlydisabled>
+    <hr>
+    <button class="btn btn-warning" type="submit">Buscar Videojuego</button>
 </form>
 <table class="table">
     <thead>
@@ -54,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Genero.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning" >Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">Borrar</a>
             </td>
         </tr>
 }

@@ -1,11 +1,11 @@
-@model Parcial1.Models.Videojuego
+@model Parcial1.ViewModels.ViedeojuegoViewMOdel;
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
+<h1>Editar</h1>
+<hr>
 <h4>Videojuego</h4>
 <hr />
 <div class="row">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="RestriccionEdad" class="control-label"></label>
-                <select asp-for="RestriccionEdad" class="form-control"></select>
+                <select asp-items="ViewBag.ViedeojuegoType" asp-for="RestriccionEdad" class="form-control"></select>
                 <span asp-validation-for="RestriccionEdad" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,18 +35,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="GeneroId" class="control-label"></label>
-                <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.GeneroId"></select>
+                <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.Generos"></select>
                 <span asp-validation-for="GeneroId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-warning" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
 </div>
 
 @section Scripts {

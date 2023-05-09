@@ -13,6 +13,30 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\callofduty.jpg",
+      "PackagePath": "staticwebassets\\images\\callofduty.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\devilmaycry.jpg",
+      "PackagePath": "staticwebassets\\images\\devilmaycry.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\fifa23.jpg",
+      "PackagePath": "staticwebassets\\images\\fifa23.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\godofwar.jpg",
+      "PackagePath": "staticwebassets\\images\\godofwar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\gtav.jpg",
+      "PackagePath": "staticwebassets\\images\\gtav.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\thelastofus.jpg",
+      "PackagePath": "staticwebassets\\images\\thelastofus.jpg"
+    },
+    {
       "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

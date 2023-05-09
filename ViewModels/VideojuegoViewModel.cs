@@ -10,6 +10,7 @@ public class ViedeojuegoViewMOdel
     [Required(ErrorMessage ="Tiene que completarse este campo")]
     public string Desarrollador { get; set; }
     [Required(ErrorMessage ="Tiene que completarse este campo")]
+    [Display(Name ="Restriccion de Edad")]
     public ViedeojuegoType RestriccionEdad { get; set; }
     [Required(ErrorMessage ="Tiene que completarse este campo")]
     [Range(2000,25000,ErrorMessage ="El rango entre precios es de $2000 hasta $25000")]
