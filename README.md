@@ -1,4 +1,4 @@
-# Tienda de videojuego
+# Tienda de videojuegos
 
 Este proyecto va a simular una tienda de videojuegos en el cual cada videojuego va a estar relacionado a un genero.
 
@@ -14,13 +14,13 @@ Este proyecto va a simular una tienda de videojuegos en el cual cada videojuego 
 - `⏩Proximamente⏩`: El proyecto tiene planeado mejorar el aspecto visual de la pagina y hacerla mas intuitiva.
 
 \## 📁 Acceso al proyecto
-Hay que clonar el proyecto
+Hay que clonar el proyecto.
 
 ## ✔ Tecnologías utilizadas
 - C#
 - ASP.NET
 - Entity Framework
 
-## Sección de preguntas
-- `¿Se puede crear un juego si no existe ningun genero?`: No, no se puede, se debe crear un genero para luego crear el viedeojuego.
-- `¿El buscador tiene en cuenta las mayúsculas y espacios?`: No los tiene en cuenta. Ademas el buscar sigue funcionando a pesar de que la palabra ingresada no esté completa.
+## Sección de preguntas ❓❔
+- `¿Se puede crear un juego si no existe ningun genero?`: No, no se puede. Se debe crear un genero para luego crear el viedeojuego.
+- `¿El buscador tiene en cuenta las mayúsculas y espacios?`: No los tiene en cuenta. Ademas el buscador sigue funcionando a pesar de que la palabra ingresada no esté completa.
