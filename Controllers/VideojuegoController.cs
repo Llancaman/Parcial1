@@ -143,15 +143,11 @@ namespace Parcial1.Controllers
             return View(videojuegos);
         }
 
+
         // POST: Videojuego/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         
-        /// <summary>
-        /// Guarda la edicion de un videojuego
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Retorna una vista con los cambios hechos</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Desarrollador,RestriccionEdad,Precio,GeneroId")] ViedeojuegoViewMOdel videojuego)

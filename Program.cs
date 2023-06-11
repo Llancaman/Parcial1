@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Parcial1.Data;
@@ -6,6 +7,11 @@ builder.Services.AddDbContext<VideojuegoContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("VideojuegoContext") ?? throw new InvalidOperationException("Connection string 'VideojuegoContext' not found.")));
 
 // Add services to the container.
+//Podemos sacar el RequiredConfirmedAccount
+builder.Services.AddDefaultIdentity<IdentityUser>()
+//Podemos crear usuarios y roles
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<VideojuegoContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -28,5 +34,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

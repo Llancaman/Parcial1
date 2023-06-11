@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Parcial1.Models;
 
 namespace Parcial1.Data
 {
-    public class VideojuegoContext : DbContext
+    public class VideojuegoContext : IdentityDbContext
     {
         public VideojuegoContext (DbContextOptions<VideojuegoContext> options)
             : base(options)

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Parcial1.ViewModels;
 public class GeneroViewModel
 {

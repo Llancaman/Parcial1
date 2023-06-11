@@ -12,3 +12,14 @@
         <img src="~/images/thelastofus.jpg" alt="">
     </section>
 </div>
+@if (User.Identity != null && User.Identity.IsAuthenticated){
+<div>
+    <h3>Esto solo lo puede ver un usuario logeado</h3>
+</div>    
+}
+
+@* @if (User.Identity != null && User.IsInRole("Administrador")){
+<div>
+    <h3>Esto solo lo puede ver un usuario logeado</h3>
+</div>    
+} *@
