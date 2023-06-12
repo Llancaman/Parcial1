@@ -17,5 +17,12 @@ namespace Parcial1.Data
 
         public DbSet<Parcial1.Models.Videojuego> Videojuego { get; set; } = default!;
         public DbSet<Parcial1.Models.Genero> Genero { get; set; } = default!;
+        public DbSet<Parcial1.Models.Plataforma> Plataforma { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+        }
     }
 }

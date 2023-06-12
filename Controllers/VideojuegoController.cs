@@ -7,152 +7,94 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Parcial1.Data;
 using Parcial1.Models;
-using Parcial1.Utils;
 using Parcial1.ViewModels;
 
 namespace Parcial1.Controllers
 {
-    public class VideojuegoController : Controller
+    public class GeneroController : Controller
     {
         private readonly VideojuegoContext _context;
 
-        public VideojuegoController(VideojuegoContext context)
+        public GeneroController(VideojuegoContext context)
         {
             _context = context;
         }
 
-        // GET: Videojuego
-        public IActionResult Index(string filtro)
+        // GET: Genero
+        public async Task<IActionResult> Index()
         {
-            var videojuegos = _context.Videojuego.Include(v => v.Genero).AsEnumerable();
-            if (!string.IsNullOrEmpty(filtro) && !string.IsNullOrWhiteSpace(filtro))
-            {
-                videojuegos = videojuegos.Where(v => v.Nombre.ToLower().Contains(filtro.ToLower()));
-            }
-            return View(videojuegos.ToList());
+              return _context.Genero != null ? 
+                          View(await _context.Genero.ToListAsync()) :
+                          Problem("Entity set 'VideojuegoContext.Genero'  is null.");
         }
 
-        // GET: Videojuego/Details/5
-        /// <summary>
-        /// Muestra los detalles del videojuego
-        /// </summary>
-        /// <param name="id">Sirve para encontrar un videojuego por el id</param>
-        /// <returns>Devuelve una vista para visualizar los detalles del videojuego</returns>
+        // GET: Genero/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Videojuego == null)
+            if (id == null || _context.Genero == null)
             {
                 return NotFound();
             }
 
-            var videojuego = await _context.Videojuego
-                .Include(v => v.Genero)
+            var genero = await _context.Genero
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (videojuego == null)
+            if (genero == null)
             {
                 return NotFound();
             }
 
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: Videojuego/Create
-        /// <summary>
-        /// Devuelve una vista para poder crear un videojuego
-        /// </summary>
-        /// <returns>Retorna una vista para crear un videojuego</returns>        
+        // GET: Genero/Create
         public IActionResult Create()
         {
-
-            ViewBag.ViedeojuegoType = Enum.GetValues(typeof(ViedeojuegoType)).Cast<ViedeojuegoType>().Select(e => new SelectListItem
-            {
-                Text = e.ToString(),
-                Value = ((int)e).ToString()
-            }).ToList();
-
-            ViewBag.Generos = new SelectList(_context.Genero.Select(g => new
-            {
-                Id = g.Id,
-                Nombre = g.Nombre,
-
-            }), "Id", "Nombre");
             return View();
         }
 
-        // POST: Videojuego/Create
+        // POST: Genero/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /// <summary>
-        /// Crear un nuevo videojuego
-        /// </summary>
-        /// <param name="videojuego"></param>
-        /// <returns>Retorna un videojuego nuevo</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Desarrollador,RestriccionEdad,Precio,GeneroId")] ViedeojuegoViewMOdel videojuego)
+        public async Task<IActionResult> Create([Bind("Nombre,Descripcion")] GeneroViewModel genero)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(new Videojuego
-                {
-                    GeneroId = videojuego.GeneroId,
-                    Nombre = videojuego.Nombre,
-                    Desarrollador = videojuego.Desarrollador,
-                    RestriccionEdad = videojuego.RestriccionEdad,
-                    Precio = videojuego.Precio,
+                _context.Add(new Genero{
+                    Nombre=genero.Nombre,
+                    Descripcion=genero.Descripcion
                 });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GeneroId"] = new SelectList(_context.Set<Genero>(), "Id", "Id", videojuego.GeneroId);
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: Videojuego/Edit/5    
+        // GET: Genero/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Videojuego == null)
+            if (id == null || _context.Genero == null)
             {
                 return NotFound();
             }
-            var videojuego = await _context.Videojuego.FindAsync(id);
-            if (videojuego == null)
+
+            var genero = await _context.Genero.FindAsync(id);
+            if (genero == null)
             {
                 return NotFound();
             }
-            var videojuegos = new ViedeojuegoViewMOdel()
-            {
-                GeneroId = videojuego.GeneroId,
-                Nombre = videojuego.Nombre,
-                Desarrollador = videojuego.Desarrollador,
-                RestriccionEdad = videojuego.RestriccionEdad,
-                Precio = videojuego.Precio,
-            };
-            ViewBag.ViedeojuegoType = Enum.GetValues(typeof(ViedeojuegoType)).Cast<ViedeojuegoType>().Select(e => new SelectListItem
-            {
-                Text = e.ToString(),
-                Value = ((int)e).ToString()
-            }).ToList();
-
-            ViewBag.Generos = new SelectList(_context.Genero.Select(g => new
-            {
-                Id = g.Id,
-                Nombre = g.Nombre,
-
-            }), "Id", "Nombre");
-            return View(videojuegos);
+            return View(genero);
         }
 
-
-        // POST: Videojuego/Edit/5
+        // POST: Genero/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Desarrollador,RestriccionEdad,Precio,GeneroId")] ViedeojuegoViewMOdel videojuego)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,VideojuegoId")] GeneroViewModel genero)
         {
-            if (id != videojuego.Id)
+            if (id != genero.Id)
             {
                 return NotFound();
             }
@@ -161,26 +103,16 @@ namespace Parcial1.Controllers
             {
                 try
                 {
-                    if (videojuego == null)
-                    {
-                        return NotFound();
-                    }
-                    _context.Update(new Videojuego
-                    {
-                        Id=videojuego.Id,
-                        GeneroId = videojuego.GeneroId,
-                        Nombre = videojuego.Nombre,
-                        Desarrollador = videojuego.Desarrollador,
-                        RestriccionEdad = videojuego.RestriccionEdad,
-                        Precio = videojuego.Precio,
-                    }
-                    );
+                    _context.Update(new Genero{
+                        Id=genero.Id,
+                        Nombre=genero.Nombre,
+                        Descripcion=genero.Descripcion,
+                    });
                     await _context.SaveChangesAsync();
-
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VideojuegoExists(videojuego.Id))
+                    if (!GeneroExists(genero.Id))
                     {
                         return NotFound();
                     }
@@ -191,51 +123,49 @@ namespace Parcial1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GeneroId"] = new SelectList(_context.Set<Genero>(), "Id", "Id", videojuego.GeneroId);
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: Videojuego/Delete/5
+        // GET: Genero/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Videojuego == null)
+            if (id == null || _context.Genero == null)
             {
                 return NotFound();
             }
 
-            var videojuego = await _context.Videojuego
-                .Include(v => v.Genero)
+            var genero = await _context.Genero
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (videojuego == null)
+            if (genero == null)
             {
                 return NotFound();
             }
 
-            return View(videojuego);
+            return View(genero);
         }
 
-        // POST: Videojuego/Delete/5
+        // POST: Genero/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Videojuego == null)
+            if (_context.Genero == null)
             {
-                return Problem("Entity set 'VideojuegoContext.Videojuego'  is null.");
+                return Problem("Entity set 'VideojuegoContext.Genero'  is null.");
             }
-            var videojuego = await _context.Videojuego.FindAsync(id);
-            if (videojuego != null)
+            var genero = await _context.Genero.FindAsync(id);
+            if (genero != null)
             {
-                _context.Videojuego.Remove(videojuego);
+                _context.Genero.Remove(genero);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VideojuegoExists(int id)
+        private bool GeneroExists(int id)
         {
-            return (_context.Videojuego?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Genero?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

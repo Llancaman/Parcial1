@@ -9,5 +9,7 @@ public class Videojuego{
     public int Precio { get; set; }
     public int GeneroId{get;set;}
     public Genero Genero{get;set;}
+
+    public virtual List<Plataforma> Plataformas{get;set;}
     
 }
