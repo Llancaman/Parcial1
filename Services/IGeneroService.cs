@@ -4,9 +4,9 @@ namespace Parcial1.Services;
 
 public interface IGeneroService
 {
-   void Create(Genero obj); 
-   List<Videojuego> GettAll();
-   void Update(Genero obj);
-   void Delete(Genero obj);
-   Genero? GetById(int id);
+   Task Create(Genero obj);
+   List<Genero> GetAll();
+   Task Update(Genero obj);
+   Task Delete(int id);
+   Task<Genero> GetById(int id);
 }

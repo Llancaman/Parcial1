@@ -43,6 +43,10 @@
         </dd>
     </dl>
 </div>
+@foreach (var item in Model.Plataformas)
+{
+    @item.Nombre
+}
 <div>
     <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Id">Editar</a> |
     <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>

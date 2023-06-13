@@ -8,35 +8,35 @@ using Microsoft.EntityFrameworkCore;
 using Parcial1.Data;
 using Parcial1.Models;
 using Parcial1.Services;
+using Parcial1.Utils;
 using Parcial1.ViewModels;
 
 namespace Parcial1.Controllers
 {
-    public class GeneroController : Controller
+    public class PlataformaController : Controller
     {
         private readonly VideojuegoContext _context;
-        private readonly IGeneroService _generoService;
+        private readonly IPlataformaService _plataformaService;
 
-        public GeneroController(VideojuegoContext context, IGeneroService generoService)
+        public PlataformaController(VideojuegoContext context, IPlataformaService plataformaService)
         {
             _context = context;
-            _generoService = generoService;
+            _plataformaService=plataformaService;
         }
 
-        // GET: Genero
+        // GET: Plataforma
         public async Task<IActionResult> Index(string filtro)
         {
-            var videojuegos = _generoService.GetAll();
+            var plataformas = _plataformaService.GettAll();
             if (!string.IsNullOrEmpty(filtro) && !string.IsNullOrWhiteSpace(filtro))
             {
-                videojuegos = videojuegos.Where(v => v.Nombre.ToLower().Contains(filtro.ToLower())||
-                v.Descripcion.ToLower().Contains(filtro.ToLower())
-                ).ToList();
+                plataformas = plataformas.Where(v => v.Nombre.ToLower().Contains(filtro.ToLower())||
+                 v.Empresa.ToLower().Contains(filtro.ToLower())).ToList();
             }
-            return View(videojuegos.ToList());
+            return View(plataformas.ToList());
         }
 
-        // GET: Genero/Details/5
+        // GET: Plataforma/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,79 +44,78 @@ namespace Parcial1.Controllers
                 return NotFound();
             }
 
-            var genero = await _generoService.GetById(id.Value);
-            if (genero == null)
-            {
-                return NotFound();
-            }
+            var plataforma = await _plataformaService.GetById(id.Value);
 
-            return View(genero);
+            return View(plataforma);
         }
 
-        // GET: Genero/Create
+        // GET: Plataforma/Create
+        
         public IActionResult Create()
         {
+
             return View();
         }
 
-        // POST: Genero/Create
+        // POST: Videojuego/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre,Descripcion")] GeneroViewModel genero)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Empresa")] PlataformaViewModel plataforma)
         {
             if (ModelState.IsValid)
             {
-                await _generoService.Create(new Genero{
-                    Nombre=genero.Nombre,
-                    Descripcion=genero.Descripcion,
+                await _plataformaService.Create(new Plataforma{
+                    Nombre=plataforma.Nombre,
+                    Empresa=plataforma.Empresa,
                 });
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            return View(plataforma);
         }
 
-        // GET: Genero/Edit/5
+        // GET: Plataforma/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Plataforma == null)
             {
                 return NotFound();
             }
 
-            var genero = await _generoService.GetById(id.Value);
-            if (genero == null)
+            var plataforma = await _plataformaService.GetById(id.Value);
+            if (plataforma == null)
             {
                 return NotFound();
             }
-            return View(genero);
+            return View(plataforma);
         }
 
-        // POST: Genero/Edit/5
+        // POST: Plataforma/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Descripcion,VideojuegoId")] GeneroViewModel genero)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Empresa")] PlataformaViewModel plataforma)
         {
-            if (id != genero.Id)
+            if (id != plataforma.Id)
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
-                await _generoService.Update(new Genero{
-                    Id=genero.Id,
-                    Nombre=genero.Nombre,
-                    Descripcion=genero.Descripcion,
+                await _plataformaService.Update(new Plataforma{
+                    Id=plataforma.Id,
+                    Nombre=plataforma.Nombre,
+                    Empresa=plataforma.Empresa,
                 });
                 return RedirectToAction(nameof(Index));
             }
-            return View(genero);
+            return View(plataforma);
         }
 
-        // GET: Genero/Delete/5
+        // GET: Plataforma/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,13 +123,13 @@ namespace Parcial1.Controllers
                 return NotFound();
             }
 
-            var genero = await _generoService.GetById(id.Value);
-            if (genero == null)
+            var plataforma = await _plataformaService.GetById(id.Value);
+            if (plataforma == null)
             {
                 return NotFound();
             }
 
-            return View(genero);
+            return View(plataforma);
         }
 
         // POST: Genero/Delete/5
@@ -138,13 +137,13 @@ namespace Parcial1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _generoService.Delete(id); 
+            await _plataformaService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GeneroExists(int id)
+        private bool PlataformaExists(int id)
         {
-          return (_context.Genero?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Plataforma?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

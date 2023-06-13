@@ -12,43 +12,39 @@ public class GeneroService : IGeneroService
     {
         _context = context;
     }
-    public void Create(Genero obj)
+    public async Task Create(Genero obj)
     {
-        throw new NotImplementedException();
+        _context.Add(obj);
+        await _context.SaveChangesAsync();
     }
 
-    public void Delete(Genero obj)
+    public async Task Delete(int id)
     {
-        throw new NotImplementedException();
+        var genero = await _context.Genero.FindAsync(id);
+        if (genero != null)
+        {
+            _context.Genero.Remove(genero);
+        }
+
+        await _context.SaveChangesAsync();
     }
 
-    public Genero? GetById(int id)
+    public async Task<Genero> GetById(int id)
     {
-        var genero =_context.Genero
-                .FirstOrDefault(m => m.Id == id);
+        var genero = await _context.Genero
+                .FirstOrDefaultAsync(m => m.Id == id);
 
         return genero;
     }
 
-    public List<Videojuego> GettAll()
+    public List<Genero> GetAll()
     {
-        return _context.Genero != null ? 
-                          View(_context.Genero.ToListAsync()) :
-                          Problem("Entity set 'VideojuegoContext.Genero'  is null.");
+        return _context.Genero.Include(v => v.Videojuegos).ToList();
     }
 
-    private List<Videojuego> View(object value)
+    public async Task Update(Genero obj)
     {
-        throw new NotImplementedException();
-    }
-
-    private List<Videojuego> Problem(string v)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(Genero obj)
-    {
-        throw new NotImplementedException();
+            _context.Update(obj);
+            await _context.SaveChangesAsync();
     }
 }
