@@ -26,7 +26,7 @@ Hay que clonar el proyecto.
 - `¿El buscador tiene en cuenta las mayúsculas y espacios?`: No los tiene en cuenta. Ademas el buscador sigue funcionando a pesar de que la palabra ingresada no esté completa.
 
 ## Como usar el boton Black Friday
-- Ingresar como Administrador u Operador
-- Poner apretar sobre el boton "Aplicar Black Friday" en la lista de Videojuego
-- Ingresar el porcentaje
-- Guardar cambios
+- Ingresar como "Administrador" u "Operador".
+- Poner apretar sobre el boton "Aplicar Black Friday" en la lista de Videojuego.
+- Ingresar el porcentaje de descuento.
+- Guardar cambios.
