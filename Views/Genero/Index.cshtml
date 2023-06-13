@@ -11,7 +11,7 @@
 </p>
 <form action="@Url.Action("Index","Genero")">
     @* <input class="form-control" type="text" name="filtro"> *@
-    <input class="form-control" type="text"  aria-label="readonly input example" name="filtro" readonlydisabled>
+    <input class="form-control" type="text" aria-label="readonly input example" name="filtro" readonlydisabled>
     <hr>
     <button class="btn btn-warning" type="submit">Buscar Genero</button>
 </form>
@@ -28,20 +28,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">Borrar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                @if (User.Identity != null && User.IsInRole("Administrador") || User.IsInRole("Operador") || User.IsInRole("Visualizador") )
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Detalles</a>
+                    </td>
+                }
+                @if (User.Identity != null && User.IsInRole("Administrador") || User.IsInRole("Operador")){
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">Borrar</a>
+                    </td>   
+                }               
+            </tr>
+        }
     </tbody>
 </table>

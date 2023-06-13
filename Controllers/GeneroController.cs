@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace Parcial1.Controllers
             }
             return View(videojuegos.ToList());
         }
-
+        [Authorize(Roles = "Administrador,Operador,Visualizador")]
         // GET: Genero/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -52,7 +53,7 @@ namespace Parcial1.Controllers
 
             return View(genero);
         }
-
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Genero/Create
         public IActionResult Create()
         {
@@ -77,6 +78,7 @@ namespace Parcial1.Controllers
             return View(genero);
         }
 
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Genero/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,6 +118,7 @@ namespace Parcial1.Controllers
             return View(genero);
         }
 
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Genero/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

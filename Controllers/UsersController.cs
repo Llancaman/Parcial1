@@ -8,13 +8,13 @@ using Parcial1.Views.Users.ViewModels;
 
 namespace Parcial1.Controllers;
 
+[Authorize(Roles = "Administrador")]
 public class UsersController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    //Añadimos el userManager
     public UsersController(
         ILogger<HomeController> logger,
         UserManager<IdentityUser> userManager,
@@ -27,7 +27,7 @@ public class UsersController : Controller
 
     public IActionResult Index()
     {
-        //Listar todos los usuarios.
+        
         var users = _userManager.Users.ToList();
         return View(users);
     }

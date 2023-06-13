@@ -7,6 +7,7 @@ using Parcial1.Views.Roles.ViewModels;
 
 namespace Parcial1.Controllers;
 
+[Authorize(Roles = "Administrador")]
 public class RolesController : Controller
 {
     private readonly ILogger<HomeController> _logger;

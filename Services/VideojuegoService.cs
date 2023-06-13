@@ -12,9 +12,16 @@ public class VideojuegoService : IVideojuegoService
     {
         _context = context;
     }
-    public async Task Create(Videojuego obj)
+    public async Task Create(Videojuego obj, List<int> ids)
     {
         _context.Add(obj);
+        obj.Plataformas=new List<Plataforma>();
+        foreach (var item in ids)
+        {
+            var plataforma= _context.Plataforma.Find(item);
+            obj.Plataformas.Add(plataforma);
+        }
+
         await _context.SaveChangesAsync();
 
     }
@@ -45,7 +52,14 @@ public class VideojuegoService : IVideojuegoService
         return _context.Videojuego.Include(v => v.Genero).ToList();
      }
 
-    public async Task Update(Videojuego obj)
+    public async Task Update(Videojuego obj, List<int> ids)
+    {
+        _context.Update(obj);
+        await _context.SaveChangesAsync();
+
+    }
+
+    public async Task BlackFriday(Videojuego obj)
     {
         _context.Update(obj);
         await _context.SaveChangesAsync();

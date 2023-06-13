@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace Parcial1.Controllers
             }
             return View(plataformas.ToList());
         }
-
+        [Authorize(Roles = "Administrador,Operador,Visualizador")]
         // GET: Plataforma/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,7 +49,7 @@ namespace Parcial1.Controllers
 
             return View(plataforma);
         }
-
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Plataforma/Create
         
         public IActionResult Create()
@@ -57,7 +58,7 @@ namespace Parcial1.Controllers
             return View();
         }
 
-        // POST: Videojuego/Create
+        // POST: Plataforma/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -74,7 +75,7 @@ namespace Parcial1.Controllers
             }
             return View(plataforma);
         }
-
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Plataforma/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -114,7 +115,7 @@ namespace Parcial1.Controllers
             }
             return View(plataforma);
         }
-
+        [Authorize(Roles = "Administrador,Operador")]
         // GET: Plataforma/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -132,7 +133,7 @@ namespace Parcial1.Controllers
             return View(plataforma);
         }
 
-        // POST: Genero/Delete/5
+        // POST: Plataforma/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

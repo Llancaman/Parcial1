@@ -1,3 +1,4 @@
+using Parcial1.Models;
 using Parcial1.Utils;
 using System.ComponentModel.DataAnnotations;
 namespace Parcial1.ViewModels;
@@ -17,4 +18,5 @@ public class ViedeojuegoViewMOdel
     public int Precio { get; set; }
     [Required(ErrorMessage ="Tiene que completarse este campo")]
     public int GeneroId{get;set;}
+    public virtual List<int> Plataformas{get;set;}
 }

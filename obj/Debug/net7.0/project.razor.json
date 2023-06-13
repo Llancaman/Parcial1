@@ -18665,6 +18665,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Videojuego\\BlackFriday.cshtml",
+      "TargetPath": "Views\\Videojuego\\BlackFriday.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\Views\\Users\\Edit.cshtml",
       "TargetPath": "Views\\Users\\Edit.cshtml",
       "FileKind": "mvc"
