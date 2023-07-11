@@ -25,6 +25,11 @@
         </dd>
     </dl>
 </div>
+<h3>Juegos que se encuentran en esta consola:</h3>
+@foreach (var item in Model.Videojuegos)
+{
+    <li>@item.Nombre</li>
+}
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a> |
     <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>

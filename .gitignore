@@ -363,4 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 *.cache
 *.pdb
+<<<<<<< HEAD
 *.txt
+=======
+*.txt
+>>>>>>> experimentar
