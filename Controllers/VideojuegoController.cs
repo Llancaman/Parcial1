@@ -33,7 +33,9 @@ namespace Parcial1.Controllers
             {
                 videojuegos = videojuegos.Where(v => v.Nombre.ToLower().Contains(filtro.ToLower()) ||
                 v.Desarrollador.ToLower().Contains(filtro.ToLower()) ||
-                v.Genero.Nombre.ToLower().Contains(filtro.ToLower())
+                v.Genero.Nombre.ToLower().Contains(filtro.ToLower()) ||
+                v.RestriccionEdad.ToString().ToLower().Contains(filtro.ToLower()) ||
+                v.Precio.ToString().ToLower().Contains(filtro.ToLower())
                 ).ToList();
             }
             return View(videojuegos.ToList());
@@ -206,9 +208,10 @@ namespace Parcial1.Controllers
             {
                 return NotFound();
             }
-            if(model.Porcentaje>0)
+            var cuenta = videojuego.Precio - (model.Porcentaje * videojuego.Precio/100);           
+            if(model.Porcentaje>0 && cuenta>0)
             {
-            videojuego.Precio= videojuego.Precio - (model.Porcentaje * videojuego.Precio/100);
+            videojuego.Precio= cuenta;
             await _videojuegoService.BlackFriday(videojuego);
             }
             return RedirectToAction("Index");

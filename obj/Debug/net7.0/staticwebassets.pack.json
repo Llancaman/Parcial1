@@ -13,6 +13,26 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\1.jpg",
+      "PackagePath": "staticwebassets\\images\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\2.jpg",
+      "PackagePath": "staticwebassets\\images\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\3.jpg",
+      "PackagePath": "staticwebassets\\images\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\4.jpg",
+      "PackagePath": "staticwebassets\\images\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\5.jpg",
+      "PackagePath": "staticwebassets\\images\\5.jpg"
+    },
+    {
       "Id": "C:\\Users\\yank\\Desktop\\Herramientas de Programacion\\Parcial1\\Parcial1\\wwwroot\\images\\callofduty.jpg",
       "PackagePath": "staticwebassets\\images\\callofduty.jpg"
     },

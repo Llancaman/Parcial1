@@ -32,6 +32,7 @@ public class PlataformaService : IPlataformaService
     public async Task<Plataforma> GetById(int id)
     {
         var plataforma = _context.Plataforma
+                .Include(m => m.Videojuegos)
                 .FirstOrDefault(m => m.Id == id);
 
         return plataforma;
